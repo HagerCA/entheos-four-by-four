@@ -1,0 +1,842 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow, noarchive, nosnippet, noimageindex">
+<title>The Entheos Collective · Four by Four · Christopher Hager</title>
+<style>
+/* Self-contained: fonts and glyphs sit beside this page. Public edition: patterns, not people. */
+@font-face{font-family:'Space Grotesk';src:url('./fonts/SpaceGrotesk-a57c9413.woff2') format('woff2');font-weight:300 700;font-display:swap;}
+@font-face{font-family:'DM Sans';src:url('./fonts/DMSans-f6298972.woff2') format('woff2');font-weight:100 1000;font-display:swap;}
+@font-face{font-family:'Instrument Serif';src:url('./fonts/InstrumentSerif-99cc6edf.woff2') format('woff2');font-weight:400;font-style:normal;font-display:swap;}
+@font-face{font-family:'Instrument Serif';src:url('./fonts/InstrumentSerif-fa1a1a83.woff2') format('woff2');font-weight:400;font-style:italic;font-display:swap;}
+
+:root{
+  --crown:#1B0C20; --crown-2:#2A1130; --ink:#EFE7DA; --ink-2:rgba(239,231,218,.8); --ink-3:rgba(239,231,218,.6); --ink-4:rgba(239,231,218,.42);
+  --ankh:#A57626; --ankh-hi:#D9A648; --triton:#7C2D50; --mystic:#3B1A4C; --panel:#22102A; --panel-2:#2B1534;
+  --display:'Instrument Serif',Georgia,serif;
+  --head:'Space Grotesk',"Helvetica Neue",Arial,sans-serif;
+  --body:'DM Sans',-apple-system,"Segoe UI",Roboto,sans-serif;
+  --glyph:'Segoe UI Symbol','Noto Sans Symbols','Apple Symbols',sans-serif;
+  --spectrum-x:linear-gradient(to right,#C8242B 0%,#E8732A 17%,#F2C230 33%,#3FA86A 50%,#2C5FC4 67%,#5A47C2 83%,#9B5FD0 100%);
+  --root:#C8242B; --sacral:#E8732A; --solar:#F2C230; --heart:#3FA86A; --throat:#2C5FC4; --third:#5A47C2; --crownc:#9B5FD0;
+  --fire:#E0724B; --earth:#8FB36A; --air:#E2C27A; --water:#6FA4D8;
+  --shade:#D58A9B; --light:#E8C987; --navh:56px;
+}
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;}
+body{margin:0;background:var(--crown);color:var(--ink);font-family:var(--body);font-size:17.5px;line-height:1.66;letter-spacing:.005em;}
+a{color:var(--ankh-hi);}
+.wide{max-width:1120px;margin:0 auto;padding:0 28px;}
+.read{max-width:760px;}
+section{scroll-margin-top:calc(var(--navh) + 10px);}
+strong{color:#fff;font-weight:600;}
+.dots{position:relative;}
+.dots::after{content:"";position:absolute;inset:0;pointer-events:none;opacity:.45;background-image:radial-gradient(rgba(239,231,218,.08) 1px, transparent 1.2px);background-size:7px 7px;}
+.dots > *{position:relative;z-index:1;}
+
+/* hover terms */
+.t{border-bottom:1px dotted rgba(217,166,72,.75);cursor:help;color:inherit;outline:none;}
+.t:hover,.t:focus{color:#fff;border-bottom-color:var(--ankh-hi);background:rgba(217,166,72,.1);}
+#tip{position:fixed;z-index:200;max-width:330px;pointer-events:none;opacity:0;transform:translateY(4px);transition:opacity .14s,transform .14s;
+  background:#120714;border:1px solid rgba(217,166,72,.55);border-radius:6px;padding:12px 15px 11px;box-shadow:0 12px 40px rgba(0,0,0,.55);font-size:.9rem;line-height:1.5;color:var(--ink);}
+#tip.on{opacity:1;transform:none;}
+#tip b{display:block;font-family:var(--head);font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--ankh-hi);margin-bottom:5px;font-weight:600;}
+#tip i{display:block;margin-top:7px;font-style:normal;font-family:var(--head);font-size:10.5px;letter-spacing:.06em;color:var(--ink-3);}
+.hint{font-family:var(--head);font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-4);margin:0 0 18px;}
+.hint span{border-bottom:1px dotted rgba(217,166,72,.75);}
+
+/* hero */
+.hero{text-align:center;padding:56px 0 64px;overflow:hidden;
+  background:radial-gradient(ellipse 80% 70% at 50% 0%, rgba(217,166,72,.22) 0%, transparent 60%),
+             radial-gradient(ellipse 120% 100% at 50% 50%, #1B0C20 0%, #2A1130 55%, #7C2D50 120%);}
+.hero .logo{width:190px;opacity:.95;margin-bottom:34px;}
+.kicker{font-family:var(--head);font-size:11px;font-weight:600;letter-spacing:.34em;text-transform:uppercase;color:var(--ankh-hi);margin:0 0 18px;}
+h1{font-family:var(--display);font-weight:400;font-size:clamp(3.2rem,10vw,6.4rem);line-height:.94;letter-spacing:-.025em;margin:0;color:#fff;}
+h1 em{font-style:italic;color:var(--ankh-hi);}
+.dek{max-width:37em;margin:24px auto 0;color:var(--ink-2);font-size:1.05rem;}
+.fourgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:0;max-width:760px;margin:40px auto 0;border-top:1px solid rgba(165,118,38,.35);border-bottom:1px solid rgba(165,118,38,.35);}
+.fourgrid a{display:block;padding:18px 8px;text-decoration:none;color:var(--ink);}
+.fourgrid a + a{border-left:1px solid rgba(165,118,38,.35);}
+.fourgrid a:hover{background:rgba(217,166,72,.08);}
+.fourgrid b{display:block;font-family:var(--display);font-weight:400;font-size:2.4rem;line-height:1;color:#fff;}
+.fourgrid span{display:block;margin-top:8px;font-family:var(--head);font-size:9.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-3);}
+.badge{display:inline-block;margin-top:26px;font-family:var(--head);font-size:9.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--ink-3);border:1px solid rgba(239,231,218,.18);padding:6px 12px;border-radius:30px;}
+
+/* nav */
+.topnav{position:sticky;top:0;z-index:50;background:rgba(27,12,32,.94);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid rgba(165,118,38,.28);}
+.topnav::before{content:"";position:absolute;left:0;right:0;top:0;height:2px;background:var(--spectrum-x);opacity:.85;}
+.topnav .in{max-width:1120px;margin:0 auto;height:var(--navh);display:flex;align-items:center;gap:2px;padding:0 18px;overflow-x:auto;scrollbar-width:none;}
+.topnav .in::-webkit-scrollbar{display:none;}
+.topnav img{width:22px;margin-right:12px;opacity:.9;}
+.topnav a{flex:0 0 auto;text-decoration:none;font-family:var(--head);font-size:10.5px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-3);padding:9px 12px;}
+.topnav a:hover{color:#fff;}
+
+/* rooms */
+.room{padding:84px 0 34px;}
+.room.alt{background:linear-gradient(180deg, rgba(59,26,76,.28), rgba(27,12,32,0));}
+.room-head{display:grid;grid-template-columns:1fr auto;gap:20px;align-items:end;margin-bottom:30px;border-bottom:1px solid rgba(239,231,218,.1);padding-bottom:22px;}
+.eyebrow{font-family:var(--head);font-size:10.5px;font-weight:600;letter-spacing:.28em;text-transform:uppercase;color:var(--ankh-hi);margin:0 0 12px;display:flex;align-items:center;gap:12px;}
+.eyebrow img{width:20px;opacity:.85;}
+h2{font-family:var(--display);font-weight:400;font-size:clamp(2.3rem,5.4vw,3.4rem);line-height:1.02;margin:0;color:#fff;letter-spacing:-.015em;}
+h2 em{font-style:italic;color:var(--ankh-hi);}
+.room-head p{margin:12px 0 0;color:var(--ink-2);max-width:41em;}
+.room-head .count{font-family:var(--display);font-size:3.6rem;line-height:1;color:rgba(239,231,218,.16);}
+h3{font-family:var(--display);font-weight:400;font-size:1.9rem;line-height:1.1;margin:0 0 8px;color:#fff;}
+h4{font-family:var(--head);font-size:10.5px;letter-spacing:.24em;text-transform:uppercase;margin:0 0 8px;font-weight:600;}
+p{margin:0 0 1rem;}
+.lede{font-family:var(--display);font-size:1.6rem;line-height:1.35;color:#fff;max-width:33em;margin:0 0 1.4rem;}
+.lede em{color:var(--ankh-hi);}
+.muted{color:var(--ink-2);}
+.small{font-size:.86rem;color:var(--ink-3);}
+
+/* wheel */
+.skygrid{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);gap:40px;align-items:center;margin:10px 0 40px;}
+.wheelwrap{position:relative;}
+#wheel{width:100%;height:auto;display:block;overflow:visible;}
+#wheel .pl{cursor:help;}
+#wheel .pl circle.bg{fill:#1B0C20;stroke:rgba(217,166,72,.6);stroke-width:1;transition:all .15s;}
+#wheel .pl:hover circle.bg,#wheel .pl:focus circle.bg{fill:#3B1A4C;stroke:#fff;}
+#wheel .pl text{font-family:var(--glyph);fill:#fff;font-size:15px;text-anchor:middle;dominant-baseline:central;pointer-events:none;}
+#wheel .pl .rx{font-family:var(--head);font-size:7.5px;fill:var(--shade);}
+#wheel .sg{cursor:help;}
+#wheel .sg text{font-family:var(--glyph);font-size:15px;text-anchor:middle;dominant-baseline:central;pointer-events:none;}
+#wheel .sg path{transition:fill-opacity .15s;}
+#wheel .sg:hover path{fill-opacity:.42;}
+#wheel .asp{cursor:help;stroke-width:1.4;fill:none;transition:stroke-width .15s,opacity .15s;opacity:.75;}
+#wheel .asp:hover{stroke-width:3.2;opacity:1;}
+#wheel .hl{font-family:var(--head);font-size:8px;fill:rgba(239,231,218,.4);text-anchor:middle;dominant-baseline:central;}
+#wheel .axis{font-family:var(--head);font-size:9px;letter-spacing:.15em;fill:var(--ankh-hi);font-weight:600;}
+.legend{display:flex;flex-wrap:wrap;gap:8px 16px;font-family:var(--head);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3);margin-top:14px;justify-content:center;}
+.legend i{display:inline-block;width:18px;height:2px;vertical-align:3px;margin-right:6px;}
+.nowlist{list-style:none;padding:0;margin:0;}
+.nowlist li{display:grid;grid-template-columns:34px 1fr auto;gap:10px;align-items:baseline;padding:8px 0;border-bottom:1px solid rgba(239,231,218,.07);font-size:.95rem;color:var(--ink-2);}
+.nowlist .g{font-family:var(--glyph);font-size:1.15rem;color:var(--ankh-hi);text-align:center;}
+.nowlist .p{font-family:var(--head);font-size:11px;letter-spacing:.04em;color:var(--ink-3);text-align:right;white-space:nowrap;}
+.nowlist .r{color:var(--shade);font-weight:600;}
+
+/* signature cards */
+.sig{background:var(--panel);border:1px solid rgba(239,231,218,.08);border-radius:5px;margin:0 0 24px;overflow:hidden;position:relative;}
+.sig .top{padding:26px 28px 18px 92px;background:radial-gradient(ellipse 90% 140% at 0% 0%, rgba(124,45,80,.38) 0%, transparent 70%);position:relative;}
+.sig .num{position:absolute;left:26px;top:20px;font-family:var(--display);font-size:3rem;line-height:1;color:rgba(217,166,72,.6);}
+.sig .when{font-family:var(--head);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-3);margin:0 0 6px;}
+.sig .what{color:var(--ink-2);margin:8px 0 0;}
+.halves{display:grid;grid-template-columns:1fr 1fr;border-top:1px solid rgba(239,231,218,.08);}
+.halves > div{padding:22px 28px 10px;}
+.halves .dark{background:rgba(124,45,80,.13);border-right:1px solid rgba(239,231,218,.08);}
+.halves .dark h4{color:var(--shade);}
+.halves .lit{background:rgba(165,118,38,.09);}
+.halves .lit h4{color:var(--light);}
+.halves p{font-size:.98rem;color:var(--ink-2);}
+.lenses{display:flex;flex-wrap:wrap;gap:8px;padding:14px 28px 18px;border-top:1px solid rgba(239,231,218,.08);}
+.lens{font-family:var(--head);font-size:10px;letter-spacing:.12em;text-transform:uppercase;padding:5px 10px;border-radius:30px;border:1px solid rgba(239,231,218,.16);color:var(--ink-2);display:inline-flex;gap:7px;align-items:center;}
+.lens i{width:8px;height:8px;border-radius:50%;background:var(--c,var(--ankh-hi));display:inline-block;}
+.lens b{color:#fff;font-weight:600;}
+.lens.t{border-bottom:1px solid rgba(239,231,218,.16);}
+.lens.t:hover{border-color:var(--ankh-hi);}
+
+/* week timeline */
+.week{display:grid;grid-template-columns:repeat(8,1fr);gap:6px;margin:6px 0 30px;}
+.day{background:var(--panel);border:1px solid rgba(239,231,218,.08);border-radius:4px;padding:10px 8px 12px;text-align:center;cursor:help;position:relative;outline:none;}
+.day:hover,.day:focus{border-color:var(--ankh-hi);background:var(--panel-2);}
+.day.today{border-color:var(--ankh-hi);box-shadow:0 0 22px -6px var(--ankh-hi);}
+.day .dn{font-family:var(--head);font-size:9.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-3);}
+.day .dd{font-family:var(--display);font-size:1.6rem;line-height:1.05;color:#fff;}
+.day .mg{font-family:var(--glyph);font-size:1.25rem;margin-top:4px;color:var(--c);}
+.day .ms{font-family:var(--head);font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3);margin-top:2px;}
+.day .pip{display:block;width:8px;height:8px;border-radius:50%;margin:7px auto 0;background:var(--ankh-hi);}
+.day .pip.no{background:transparent;}
+.tl{border-left:1px solid rgba(165,118,38,.5);margin:10px 0 10px 8px;padding-left:30px;}
+.ev{position:relative;margin-bottom:26px;}
+.ev::before{content:"";position:absolute;left:-37px;top:7px;width:13px;height:13px;border-radius:50%;background:var(--crown);border:1px solid var(--ankh-hi);}
+.ev.full::before{background:var(--ink);} .ev.big::before{background:var(--ankh-hi);} .ev.now::before{background:var(--ankh-hi);box-shadow:0 0 18px var(--ankh-hi);}
+.ev .d{font-family:var(--head);font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--ankh-hi);}
+.ev h3{font-size:1.5rem;margin:4px 0 6px;}
+.ev p{color:var(--ink-2);margin:0;font-size:.98rem;}
+
+/* slow sky strip */
+.slow{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;margin:8px 0 18px;}
+.slow div{border:1px solid rgba(165,118,38,.3);border-radius:4px;padding:14px 16px;}
+.slow b{display:block;font-family:var(--head);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--ankh-hi);margin-bottom:4px;}
+.slow span{font-family:var(--display);font-size:1.25rem;color:#fff;line-height:1.2;display:block;}
+.slow p{font-size:.88rem;color:var(--ink-3);margin:6px 0 0;}
+
+/* design weather */
+.keys{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;margin:10px 0 10px;}
+.key{background:var(--panel);border:1px solid rgba(239,231,218,.08);border-radius:4px;padding:16px 18px 12px;cursor:help;outline:none;}
+.key:hover,.key:focus{border-color:var(--ankh-hi);}
+.key .gk{font-family:var(--display);font-size:2.4rem;line-height:1;color:var(--ankh-hi);}
+.key .who{font-family:var(--head);font-size:9.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-3);margin:4px 0 10px;}
+.spec{display:grid;grid-template-columns:repeat(3,1fr);gap:4px;font-family:var(--head);font-size:9.5px;letter-spacing:.05em;text-transform:uppercase;text-align:center;}
+.spec span{padding:7px 3px;border-radius:2px;}
+.spec .s{background:rgba(124,45,80,.45);color:#f4cdd8;} .spec .gi{background:rgba(165,118,38,.32);color:#f5e2b5;} .spec .si{background:rgba(155,95,208,.27);color:#e5d3f7;}
+
+/* the fours */
+.four{display:grid;grid-template-columns:1fr 1fr;gap:20px;}
+.card{background:var(--panel);border:1px solid rgba(239,231,218,.08);border-top:2px solid var(--c,var(--ankh));border-radius:5px;padding:24px 26px 16px;position:relative;}
+.card .n{font-family:var(--display);font-size:3.4rem;line-height:.9;color:var(--c,var(--ankh-hi));opacity:.75;float:right;margin:-4px 0 0 14px;}
+.card .meta{font-family:var(--head);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3);margin:0 0 12px;}
+.card p{color:var(--ink-2);font-size:.98rem;}
+.card ul{margin:4px 0 14px;padding-left:18px;color:var(--ink-2);font-size:.95rem;}
+.card ul li{margin-bottom:6px;}
+.card .ans{border-left:2px solid var(--ankh);padding:2px 0 2px 14px;margin:12px 0 12px;}
+.card .ans h4{color:var(--light);}
+.card .gift{display:grid;grid-template-columns:1fr auto 1fr;gap:10px;align-items:center;margin:4px 0 14px;font-family:var(--head);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;text-align:center;}
+.card .gift span{padding:8px 6px;border-radius:3px;}
+.card .gift .s{background:rgba(124,45,80,.45);color:#f4cdd8;}
+.card .gift .g{background:rgba(165,118,38,.32);color:#f5e2b5;}
+.card .gift em{font-style:normal;color:var(--ankh-hi);font-size:14px;}
+.bar{height:6px;border-radius:3px;background:rgba(239,231,218,.08);margin:2px 0 14px;overflow:hidden;}
+.bar i{display:block;height:100%;background:linear-gradient(90deg,var(--ankh),var(--ankh-hi));border-radius:3px;}
+blockquote{margin:14px 0 16px;padding:4px 0 4px 18px;border-left:2px solid var(--ankh);font-family:var(--display);font-style:italic;font-size:1.32rem;line-height:1.35;color:#fff;}
+blockquote cite{display:block;font-family:var(--head);font-style:normal;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3);margin-top:6px;}
+.shadowroom{background:linear-gradient(180deg, rgba(20,6,22,.9), rgba(27,12,32,0));}
+.shadowroom .card{background:#1A0A1F;border-top-color:var(--shade);}
+.note{border:1px dashed rgba(239,231,218,.22);border-radius:4px;padding:16px 20px;color:var(--ink-3);font-size:.9rem;margin:20px 0;}
+
+/* ahead */
+.ahead{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;}
+.ahead div{border:1px solid rgba(165,118,38,.3);border-radius:4px;padding:16px 18px;}
+.ahead b{display:block;font-family:var(--head);font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--ankh-hi);margin-bottom:6px;}
+.ahead span{font-family:var(--display);font-size:1.25rem;color:#fff;line-height:1.2;}
+.ahead p{font-size:.9rem;color:var(--ink-3);margin:6px 0 0;}
+
+.close{text-align:center;padding:100px 0 90px;margin-top:60px;background:radial-gradient(ellipse 120% 120% at 50% 20%, #2A1130 0%, #1B0C20 60%, #7C2D50 150%);}
+.close img{width:34px;opacity:.9;margin-bottom:22px;}
+.close p.big{font-family:var(--display);font-size:clamp(1.7rem,4.4vw,2.6rem);line-height:1.2;color:#fff;max-width:20em;margin:0 auto;}
+.close p.big em{color:var(--ankh-hi);}
+footer{background:#120714;text-align:center;padding:46px 28px 52px;color:var(--ink-3);font-size:.88rem;}
+footer img{width:44px;opacity:.85;}
+footer .promise{font-family:var(--display);font-style:italic;font-size:1.3rem;color:var(--ankh-hi);margin:12px 0 6px;}
+
+@media (max-width:900px){.skygrid{grid-template-columns:1fr;} .week{grid-template-columns:repeat(4,1fr);}}
+@media (max-width:760px){
+  .halves,.four{grid-template-columns:1fr;}
+  .halves .dark{border-right:0;border-bottom:1px solid rgba(239,231,218,.08);}
+  .room-head{grid-template-columns:1fr;} .room-head .count{display:none;}
+  .sig .top{padding-left:28px;padding-top:62px;} .fourgrid{grid-template-columns:repeat(2,1fr);} .fourgrid a:nth-child(3){border-left:0;}
+}
+</style>
+</head>
+<body>
+<div id="tip" role="tooltip"></div>
+
+<header class="hero dots">
+  <div class="wide">
+    <img class="logo" src="./assets/logo-inline-light.png" alt="Christopher Hager">
+    <p class="kicker">The Entheos Collective · Field Report</p>
+    <h1>Four <em>by</em> Four</h1>
+    <p class="dek">Every Collective call on record, May 27 to Oct 14, distilled into four fours: the themes the room keeps carrying, the takeaways worth keeping, the questions people keep bringing, and the shadow under all of it. Opened by the sky as of this morning, Wednesday Oct 28, and the week that led here.</p>
+    <div class="fourgrid">
+      <a href="#themes"><b>4</b><span>Themes</span></a>
+      <a href="#takeaways"><b>4</b><span>Takeaways</span></a>
+      <a href="#questions"><b>4</b><span>Questions</span></a>
+      <a href="#shadow"><b>4</b><span>In the shadow</span></a>
+    </div>
+    <span class="badge">Oct 28, 2026 · computed for the 9:00 AM call · Patterns, not people</span>
+  </div>
+</header>
+
+<nav class="topnav"><div class="in">
+  <img src="./assets/mark-light.png" alt="">
+  <a href="#sky">Sky Now</a><a href="#loud">Four Loudest</a><a href="#week">The Week</a><a href="#design">Design Weather</a><a href="#themes">Themes</a><a href="#takeaways">Takeaways</a><a href="#questions">Questions</a><a href="#shadow">Shadow</a><a href="#ahead">Ahead</a>
+</div></nav>
+
+<!-- ═════════════ THE SKY NOW ═════════════ -->
+<section id="sky" class="room dots"><div class="wide">
+  <div class="room-head"><div>
+    <p class="eyebrow"><img src="./assets/horus-light.png" alt="">Part One · The Sky Right Now</p>
+    <h2>The heart meets <em>the wound</em></h2>
+    <p>Cast for 9:00 AM in Guanacaste, the moment today's call opens. Float over anything with a dotted underline, any planet, any sign, or any line on the wheel, and it will tell you what it is.</p>
+  </div><div class="count">I</div></div>
+
+  <p class="hint">Hover or tap: <span>dotted words</span>, planets, signs and aspect lines all open</p>
+
+  <div class="skygrid">
+    <div class="wheelwrap">
+      <svg id="wheel" viewBox="0 0 540 540" role="img" aria-label="Sky wheel for Oct 28, 2026, 9:00 AM Costa Rica"></svg>
+      <div class="legend">
+        <span><i style="background:#D58A9B"></i>Tension (square, opposition)</span>
+        <span><i style="background:#8FD6AA"></i>Flow (trine, sextile)</span>
+        <span><i style="background:#E8C987"></i>Fusion (conjunction)</span>
+      </div>
+    </div>
+    <div>
+      <p class="lede"><span class="t" data-k="six">Six planets</span> are still <span class="t" data-k="retrograde">retrograde</span>, but the cast has changed. <em>Pluto walked out</em> on Oct 15. <em>Mercury walked in</em> on Oct 23.</p>
+      <p class="muted">Two weeks ago the sky was doing surgery. This morning it is doing the <em>stitching</em>. The tightest line in the sky is <span class="t" data-k="Venus">Venus</span> exactly <span class="t" data-k="opposite">opposite</span> <span class="t" data-k="Chiron">Chiron</span>, a fifth of a degree apart: love and the oldest wound looking straight at each other. Under it, the Sun is still pressing on Pluto, Mercury is walking back through old conversations, and the Moon is in breath-and-nerves Gemini, riding next to Uranus.</p>
+      <ul class="nowlist" id="nowlist"></ul>
+    </div>
+  </div>
+</div></section>
+
+<!-- ═════════════ FOUR LOUDEST ═════════════ -->
+<section id="loud" class="room alt"><div class="wide">
+  <div class="room-head"><div>
+    <p class="eyebrow"><img src="./assets/sun-light.png" alt="">The Four Loudest Signatures Today</p>
+    <h2>What the room will <em>feel</em> this morning</h2>
+    <p>Ranked by how tight they are and how hard they press. Each one in two halves: why it feels the way it does, and what the same transit is building on the far side.</p>
+  </div><div class="count">II</div></div>
+
+  <article class="sig">
+    <div class="top"><span class="num">01</span>
+      <p class="when">Venus <span class="t" data-k="Libra">Libra</span> 28°03' R · Chiron <span class="t" data-k="Aries">Aries</span> 27°51' R · <span class="t" data-k="orb">orb</span> 0.2°, the tightest aspect in the sky</p>
+      <h3>Venus opposite Chiron</h3>
+      <p class="what">Four days after Venus was reborn with the Sun, she walks straight across from the wounded healer. The <span class="t" data-k="axis">Aries and Libra axis</span> is the line between <em>me</em> and <em>we</em>: how I stand alone, and how I stand with you. Venus is also flowing toward the <span class="t" data-k="Node">North Node</span> (<span class="t" data-k="trine">trine</span>, 1.8°, exact Nov 1).</p>
+    </div>
+    <div class="halves">
+      <div class="dark"><h4>Why it feels tender</h4>
+        <p>Relationships become the exact place the old bruise gets pressed. A partner, a child, a parent, a friend says the one thing that lands right on it. Old rejection and "am I lovable" stories come up through the people closest to us. The Libra shadow is to smooth it over and please; the Aries shadow is to armor up and go it alone.</p></div>
+      <div class="lit"><h4>What it is building</h4>
+        <p><strong>Love that can hold the wound without closing.</strong> Chiron is the wound that becomes the medicine, and Venus opposite it shows us where. What comes up in relationship this week is not a verdict on the relationship. It is the wound arriving at the one place it can finally be met. With the North Node in the mix, the healing points toward community: being held, not only holding.</p></div>
+    </div>
+    <div class="lenses">
+      <span class="lens" style="--c:var(--heart)"><i></i>Chakra <b>Heart</b> · "Can I stay open, even when it hurts?"</span>
+      <span class="lens t" data-k="gk50"><i></i>Venus Gate <b>50.2</b> · Corruption → Equilibrium → Harmony</span>
+      <span class="lens t" data-k="gk3"><i></i>Chiron Gate <b>3.2</b> · Chaos → Innovation → Innocence</span>
+    </div>
+  </article>
+
+  <article class="sig">
+    <div class="top"><span class="num">02</span>
+      <p class="when">Sun <span class="t" data-k="Scorpio">Scorpio</span> 5°12' · Pluto <span class="t" data-k="Aquarius">Aquarius</span> 3°06', now <span class="t" data-k="direct">direct</span> · exact Mon Oct 26 at 7:00 AM · 2.1° and separating</p>
+      <h3>Sun square Pluto</h3>
+      <p class="what">The Sun is identity and will. Pluto is death, rebirth and power. A <span class="t" data-k="square">square</span> is friction that forces a choice. Sunday night's Full Moon sat right on this line, so the whole week has been lit by it.</p>
+    </div>
+    <div class="halves">
+      <div class="dark"><h4>Why it feels like pressure</h4>
+        <p>Power struggles at home and at work. The feeling of being stripped of something. Control tightening because something underneath feels out of control. The body purging on its own schedule. The real question this square keeps asking: who have I handed my power to?</p></div>
+      <div class="lit"><h4>What it is building</h4>
+        <p><strong>Power without control.</strong> Pluto has turned direct, so what got composted in the first half of October stays composted. The square asks us to take back the authority we gave away to bosses, partners, parents, or the teacher on the call, and stand in it. This is the exact theme the Collective has carried since May: self-trust over outside authority.</p></div>
+    </div>
+    <div class="lenses">
+      <span class="lens" style="--c:var(--solar)"><i></i>Chakra <b>Solar Plexus</b> and <b>Root</b></span>
+      <span class="lens t" data-k="gk28"><i></i>Sun Gate <b>28.4</b> · Purposelessness → Totality → Immortality</span>
+      <span class="lens t" data-k="gk41"><i></i>Pluto Gate <b>41.2</b> · Fantasy → Anticipation → Emanation</span>
+    </div>
+  </article>
+
+  <article class="sig">
+    <div class="top"><span class="num">03</span>
+      <p class="when">Mercury Scorpio 19°38' R · Mars <span class="t" data-k="Leo">Leo</span> 16°54' · 2.7° and tightening · exact Fri Oct 30 at 12:00 PM</p>
+      <h3>Mercury retrograde square Mars</h3>
+      <p class="what">Mercury <span class="t" data-k="station">stationed</span> retrograde on Fri Oct 23 at 2:00 PM and walks back through Scorpio until Thu Nov 12. Scorpio Mercury reads the subtext. Mars in Leo wants to be seen and wants to win.</p>
+    </div>
+    <div class="halves">
+      <div class="dark"><h4>Why it feels sharp</h4>
+        <p>Hot words. Old arguments coming back with new heat. Saying the true thing in a way designed to wound. Texts read in the wrong tone. Pride getting in front of the point. On the call, a share can run hot or turn into a case being argued.</p></div>
+      <div class="lit"><h4>What it is building</h4>
+        <p><strong>The real conversation, said once, with heart.</strong> The retrograde brings back what never got said. The square gives it the courage. Your own line from Oct 14 is the instruction for this one: "A knife can cut a meal or it can be a murder weapon. How we use the truth matters."</p></div>
+    </div>
+    <div class="lenses">
+      <span class="lens" style="--c:var(--throat)"><i></i>Chakra <b>Throat</b> · "We soften our heart, but not our voice"</span>
+      <span class="lens t" data-k="gk43"><i></i>Mercury Gate <b>43.1</b> · Deafness → Insight → Epiphany</span>
+      <span class="lens t" data-k="gk7"><i></i>Mars Gate <b>7.4</b> · Division → Guidance → Virtue</span>
+    </div>
+  </article>
+
+  <article class="sig">
+    <div class="top"><span class="num">04</span>
+      <p class="when">Moon <span class="t" data-k="Gemini">Gemini</span> 8°33' · <span class="t" data-k="gibbous">waning gibbous</span>, three days past Full · with Uranus (3.8°) · <span class="t" data-k="sextile">sextile</span> Saturn (0.9°) · both in the call's <span class="t" data-k="h6">6th house</span></p>
+      <h3>The Moon in Gemini, riding with Uranus</h3>
+      <p class="what">The Moon is the feeling body of the room. Gemini rules the lungs, the breath, the arms and the nervous system. Uranus is lightning. Saturn, in a clean sextile, is the container that can hold the strike.</p>
+    </div>
+    <div class="halves">
+      <div class="dark"><h4>Why it feels jittery</h4>
+        <p>Shallow breath, buzzing nerves, the chest that tightens, the cough that will not quit. Too much information arriving at once, minds that skip from thing to thing. The 6th house is the house of health, so the sickness wave the room named on Oct 14 is still in the picture.</p></div>
+      <div class="lit"><h4>What it is building</h4>
+        <p><strong>Lightning that can be held.</strong> Breakthroughs said out loud, in a room steady enough to hold them. The Saturn sextile is the gift here: a structured container (breath, body scan, the prayer, the four principles) turns a jolt into a download. Open with the breath this morning and the whole call will thank you.</p></div>
+    </div>
+    <div class="lenses">
+      <span class="lens" style="--c:var(--throat)"><i></i>Chakra <b>Throat</b> and <b>Heart</b>, through the breath</span>
+      <span class="lens t" data-k="gk16"><i></i>Moon Gate <b>16.4</b> · Indifference → Versatility → Mastery</span>
+      <span class="lens t" data-k="gk20"><i></i>Uranus Gate <b>20.5</b> · Superficiality → Self-Assurance → Presence</span>
+    </div>
+  </article>
+
+  <h3 style="margin-top:46px">The slow sky underneath</h3>
+  <p class="muted read">The background weather, moving too slowly to change from day to day. These are why the season feels the way it does.</p>
+  <div class="slow">
+    <div class="t" data-k="satnep"><b>Saturn and Neptune · R</b><span>Aries 9°30' and 2°09'</span><p>Re-walking the spring reset. Direct Thu Dec 10 and Sat Dec 12.</p></div>
+    <div class="t" data-k="Uranus"><b>Uranus · R</b><span>Gemini 4°47'</span><p>Rewiring breath and nerves. In the call's 6th house of health.</p></div>
+    <div class="t" data-k="Pluto"><b>Pluto · direct since Oct 15</b><span>Aquarius 3°06'</span><p>The purge released. What went, stays gone.</p></div>
+    <div class="t" data-k="outer"><b>The outer triangle</b><span>Neptune ✱ Pluto 0.95° · Uranus △ Pluto 1.7°</span><p>All three slowest planets cooperating. A supported upgrade.</p></div>
+    <div class="t" data-k="Jupiter"><b>Jupiter · Leo 23°53'</b><span>Opposite the North Node, 2.4°</span><p>The big heart pulled toward the we. Retrograde from Dec 12.</p></div>
+    <div class="t" data-k="Chiron"><b>Chiron · R</b><span>Aries 27°51'</span><p>The wound of going it alone. On the call's 5th cusp, the house of joy.</p></div>
+  </div>
+</div></section>
+
+<!-- ═════════════ THE WEEK ═════════════ -->
+<section id="week" class="room dots"><div class="wide">
+  <div class="room-head"><div>
+    <p class="eyebrow"><img src="./assets/crescent-light.png" alt="">Part Two · The Last Week</p>
+    <h2>From Pisces tears to <em>Gemini breath</em></h2>
+    <p>Wednesday to Wednesday. The Moon walked through four signs, the Sun changed sign, Venus was reborn, Mercury turned around, and a Full Moon landed on Pluto. Hover any day to see where the Moon was and what it touched.</p>
+  </div><div class="count">III</div></div>
+
+  <div class="week" id="weekstrip"></div>
+
+  <div class="tl read">
+    <div class="ev big"><p class="d">Fri Oct 23 · 4:00 AM</p><h3>The Sun enters Scorpio</h3><p>The season of depth, intimacy, death and regeneration begins. Scorpio rules the sacral, the sexual organs and the organs of elimination: what we release, and what we refuse to.</p></div>
+    <div class="ev big"><p class="d">Fri Oct 23 · 2:00 PM</p><h3>Mercury <span class="t" data-k="station">stations</span> retrograde, Scorpio 20°57'</h3><p>Mercury stops and turns back, at full volume on one degree. In Gate 43, Insight: the inner voice that hears what the outer ears miss. Direct Thu Nov 12 at 10:00 PM.</p></div>
+    <div class="ev big"><p class="d">Fri Oct 23 · 9:40 PM</p><h3>Venus meets the Sun, Scorpio 0°45'</h3><p>The <span class="t" data-k="cazimi">heart of the Sun</span>. Venus retrograde passes between Earth and Sun and a new Venus cycle begins: a new definition of what we love and value, starting from what is actually true. It landed at the doorway of Scorpio, the sign of intimacy and trust.</p></div>
+    <div class="ev"><p class="d">Sat Oct 24 to Sun Oct 25</p><h3>The Moon crosses Saturn, then Chiron, in Aries</h3><p>The Moon passed over the spring-reset degrees and the wound of going it alone. Feelings about independence, anger, and having to do it all yourself.</p></div>
+    <div class="ev"><p class="d">Sun Oct 25 · 3:00 AM</p><h3>Venus backs into Libra</h3><p>Still retrograde, now in her own sign of partnership, where she will turn direct at Libra 22°51' on Fri Nov 13.</p></div>
+    <div class="ev full"><p class="d">Sun Oct 25 · 10:12 PM</p><h3>Full Moon in Taurus 2°46', locked on Pluto</h3><p>The throat moon. Taurus rules the throat, neck, voice and the body we live in. This one sat in a <span class="t" data-k="tsquare">T-square</span> with Pluto, within a third of a degree: the Sun and Moon pulling in opposite directions, and Pluto pressing on both. What is mine against what we share. Comfort against transformation. In Gate 27, Caring: Selfishness → Altruism → Selflessness, the receiving thread in Gene Keys language.</p></div>
+    <div class="ev"><p class="d">Mon Oct 26 · 7:00 AM</p><h3>The Sun squares Pluto, exact</h3><p>The peak of the power-and-control pressure. Signature 02 above.</p></div>
+    <div class="ev now"><p class="d">Today · Wed Oct 28 · 9:00 AM</p><h3>The call opens under Venus opposite Chiron</h3><p>Sagittarius rising again (22°34'), the teacher. The Sun, Mercury and Venus all in the <span class="t" data-k="h11">11th house</span> of community. The Moon and Uranus in the 6th house of health. The call chart says it plainly: a healing circle, with the heart in the house of the group.</p></div>
+  </div>
+</div></section>
+
+<!-- ═════════════ DESIGN WEATHER ═════════════ -->
+<section id="design" class="room alt"><div class="wide">
+  <div class="room-head"><div>
+    <p class="eyebrow"><img src="./assets/scarab-light.png" alt="">Design Weather · This Morning</p>
+    <h2>The five keys <em>lit</em> for the call</h2>
+    <p>Every planet sits in a <span class="t" data-k="gate">Human Design gate</span>, and every gate is a <span class="t" data-k="genekey">Gene Key</span> with a shadow, a gift and a siddhi. These five are lit at 9:00 AM. Hover a card for how it might show up in the room.</p>
+  </div><div class="count">IV</div></div>
+  <div class="keys">
+    <div class="key t" data-k="gk28"><div class="gk">28</div><div class="who">Sun · line 4 · the theme of the day</div><div class="spec"><span class="s">Purposelessness</span><span class="gi">Totality</span><span class="si">Immortality</span></div></div>
+    <div class="key t" data-k="gk27"><div class="gk">27</div><div class="who">Earth · line 4 · the ground under it</div><div class="spec"><span class="s">Selfishness</span><span class="gi">Altruism</span><span class="si">Selflessness</span></div></div>
+    <div class="key t" data-k="gk16"><div class="gk">16</div><div class="who">Moon · line 4 · the room's feelings</div><div class="spec"><span class="s">Indifference</span><span class="gi">Versatility</span><span class="si">Mastery</span></div></div>
+    <div class="key t" data-k="gk43"><div class="gk">43</div><div class="who">Mercury R · line 1 · the voice</div><div class="spec"><span class="s">Deafness</span><span class="gi">Insight</span><span class="si">Epiphany</span></div></div>
+    <div class="key t" data-k="gk50"><div class="gk">50</div><div class="who">Venus R · line 2 · the heart</div><div class="spec"><span class="s">Corruption</span><span class="gi">Equilibrium</span><span class="si">Harmony</span></div></div>
+  </div>
+  <div class="note"><strong>For you, Christopher, four of your own this morning.</strong> <span class="t" data-k="ySat">Saturn on your Sun</span> (0.8°). <span class="t" data-k="yMC">The Sun on your Midheaven</span> (0.8°) and opposite your natal Chiron (0.4°). <span class="t" data-k="yJup">Jupiter exactly on your natal Saturn</span>, your chart ruler (0.3°). <span class="t" data-k="yChi">Chiron on your natal Venus</span> (0.9°) and Mercury (1.8°). The teacher is being asked to stand in public with his own wound showing, and it is held.</div>
+  <div class="note"><strong>Method.</strong> Every position, aspect, station and time on this page was computed with the astronomy engine bundled inside ACE, not recalled. Houses are Placidus, cast for Guanacaste; the node is the mean node; times are Costa Rica. Gates use the validated Rave wheel. Chakra pairings follow the body each sign and planet traditionally rules. Gene Keys language is Richard Rudd's.</div>
+</div></section>
+
+<!-- ═════════════ THEMES ═════════════ -->
+<section id="themes" class="room dots"><div class="wide">
+  <div class="room-head"><div>
+    <p class="eyebrow"><img src="./assets/ibis-light.png" alt="">The First Four · Themes</p>
+    <h2>What the room <em>keeps carrying</em></h2>
+    <p>Ranked by how many of the 16 recorded calls each thread appeared on, May 27 to Oct 14. Ties broken by how often the thread made it into a call's title. The bar is the share of calls.</p>
+  </div><div class="count">V</div></div>
+
+  <div class="four">
+    <div class="card" style="--c:var(--crownc)"><span class="n">1</span>
+      <h3>The body as tuning fork</h3>
+      <p class="meta">11 of 16 calls · every portal since May</p>
+      <div class="bar"><i style="width:69%"></i></div>
+      <p>Sore throats, ringing ears, vertigo, a tight chest, breath that would not come. Almost every share arrives through the body first. You read the symptom as the body refusing a role it has outgrown, not as a defect.</p>
+      <blockquote>The body is the tuning fork for the soul.<cite>Jul 8, Aug 12, Sep 23 · close paraphrase</cite></blockquote>
+      <div class="lenses" style="padding:10px 0 4px;border:0"><span class="lens" style="--c:var(--throat)"><i></i>Sky today <b>Moon and Uranus in the 6th house of health</b></span></div>
+    </div>
+    <div class="card" style="--c:var(--heart)"><span class="n">2</span>
+      <h3>Receiving and sacred reciprocity</h3>
+      <p class="meta">10 of 16 calls · rising since September</p>
+      <div class="bar"><i style="width:63%"></i></div>
+      <p>The givers learning to take. Help from a husband, from men, from the group, from a body asking for rest. Oct 14 was built on it, start to finish.</p>
+      <blockquote>You don't give the temple away. You invite people into the temple.<cite>Oct 14</cite></blockquote>
+      <div class="lenses" style="padding:10px 0 4px;border:0"><span class="lens t" data-k="gk27" style="--c:var(--heart)"><i></i>Sky today <b>Earth in Gate 27, Caring · Venus opposite Chiron</b></span></div>
+    </div>
+    <div class="card" style="--c:var(--solar)"><span class="n">3</span>
+      <h3>Self-trust over outside authority</h3>
+      <p class="meta">9 of 16 calls · in three call titles</p>
+      <div class="bar"><i style="width:56%"></i></div>
+      <p>Which voice is mine. Intuition against trauma against impatience. Knowing with a G (gnosis, felt) against knowing with a K (reasoned, "like an attorney"). The thread the calls are literally named after: "Self-Trust," "Gratitude, Voice, and Self-Trust," "Finding Voice, Receiving, and Self-Trust."</p>
+      <blockquote>The mind will give you 50 reasons to not do something. The heart is going to give you one.<cite>Oct 14</cite></blockquote>
+      <div class="lenses" style="padding:10px 0 4px;border:0"><span class="lens" style="--c:var(--solar)"><i></i>Sky today <b>Sun square Pluto: who holds your power?</b></span></div>
+    </div>
+    <div class="card" style="--c:var(--throat)"><span class="n">4</span>
+      <h3>Grief as unexpressed love</h3>
+      <p class="meta">9 of 16 calls · in two call titles</p>
+      <div class="bar"><i style="width:56%"></i></div>
+      <p>Endings stacking up. Illness in the family, children leaving home, a companion animal's last weeks, long marriages coming apart. Grief named as love with nowhere to go, and the heart's work as staying open through it.</p>
+      <blockquote>Expanding your heart isn't about more joy, but the capacity to feel grief and pain without closing.<cite>Jun 24 · from the Wave summary</cite></blockquote>
+      <div class="lenses" style="padding:10px 0 4px;border:0"><span class="lens" style="--c:var(--heart)"><i></i>Sky today <b>Venus reborn in Scorpio, the death-and-rebirth sign</b></span></div>
+    </div>
+  </div>
+  <p class="small" style="margin-top:18px">Just outside the four, tied on 9 calls: <strong>mother, father and ancestral wounds</strong>. On 8: <strong>voice and the throat</strong>, which Oct 14 put back at the center, and which the throat chakra (named on 11 of 16 calls) keeps underneath everything. "Grief is unexpressed love" is Andrew Garfield's line, on his mother; you carry it, you did not coin it.</p>
+</div></section>
+
+<!-- ═════════════ TAKEAWAYS ═════════════ -->
+<section id="takeaways" class="room alt"><div class="wide">
+  <div class="room-head"><div>
+    <p class="eyebrow"><img src="./assets/ankh-light.png" alt="">The Second Four · Takeaways</p>
+    <h2>What is worth <em>keeping</em></h2>
+    <p>The teachings you return to most, the ones a member could carry out of any call and use on a Tuesday. Each with the line it lives in and the practice that goes with it.</p>
+  </div><div class="count">VI</div></div>
+
+  <div class="four">
+    <div class="card" style="--c:var(--crownc)"><span class="n">1</span>
+      <h3>A symptom is an invitation, not a defect</h3>
+      <p>Ask the body what it needs before telling it what to do. Feel the symptom rather than decode it. The voice in your head that mocks the practice is the sign you are in the right spot.</p>
+      <blockquote>Don't you feel stupid doing this? Oh good, now I'm in the right spot.<cite>Sep 23</cite></blockquote>
+      <div class="ans"><h4>The practice</h4><p style="margin:0">Body scan crown to root. Long exhales. Feet in the dirt. Ask the body, then wait for the answer.</p></div>
+    </div>
+    <div class="card" style="--c:var(--heart)"><span class="n">2</span>
+      <h3>Receiving is half of reciprocity</h3>
+      <p>Letting someone help you is a gift to them. Nothing needs to be earned today. The apology for taking up space becomes thanks for being held.</p>
+      <blockquote>We're going to start changing our words from I'm sorry to thank you.<cite>May 27 · verbatim</cite></blockquote>
+      <div class="ans"><h4>The practice</h4><p style="margin:0">Left hand on the sacral, right on the solar: "Nothing is being taken from me. Nothing needs to be earned today."</p></div>
+    </div>
+    <div class="card" style="--c:var(--solar)"><span class="n">3</span>
+      <h3>Trauma contracts. Intuition is still.</h3>
+      <p>The fear voice speaks in "always" and "never" and wants it decided now. The true voice is calm, and usually says one thing. Bet on yourself and follow the breadcrumb, not the whole map.</p>
+      <blockquote>A vision is more powerful than a plan.<cite>Jul 21 · from the Wave summary</cite></blockquote>
+      <div class="ans"><h4>The practice</h4><p style="margin:0">The body yes and no test. Then: which voice do I trust right now, the one that wants to act, or the one that wants to rest?</p></div>
+    </div>
+    <div class="card" style="--c:var(--throat)"><span class="n">4</span>
+      <h3>Endings are plantings</h3>
+      <p>Grieve the old form of the relationship, not necessarily the person. Death and birth run together. And when someone you love is in it, what they need from you is not the right words.</p>
+      <blockquote>You have not been buried, you have been planted.<cite>Sep 23</cite></blockquote>
+      <div class="ans"><h4>The practice</h4><p style="margin:0">Stop plugging the cracks and let the water through the dam. Then show up: what is required of you is not your perfection, but your presence.</p></div>
+    </div>
+  </div>
+</div></section>
+
+<!-- ═════════════ QUESTIONS ═════════════ -->
+<section id="questions" class="room dots"><div class="wide">
+  <div class="room-head"><div>
+    <p class="eyebrow"><img src="./assets/water-light.png" alt="">The Third Four · Questions</p>
+    <h2>What people <em>actually ask</em></h2>
+    <p>Every question brought to the 15 calls that held shares (the Jun 9 teaching had none), clustered by the question underneath the question. Ranked by how many calls it came up on.</p>
+  </div><div class="count">VII</div></div>
+
+  <p class="lede read">The room asks exactly what it carries. The top three questions are the top three themes, word for word. <em>Nobody is confused about what the work is.</em> They are asking for permission to do it.</p>
+
+  <div class="four">
+    <div class="card" style="--c:var(--heart)"><span class="n">1</span>
+      <h3>"Am I allowed to rest and receive without earning it?"</h3>
+      <p class="meta">11 calls · 12 people</p>
+      <div class="bar"><i style="width:73%"></i></div>
+      <ul>
+        <li>"Can I make it on my own, or will I always end up caretaking?"</li>
+        <li>"Why can't I take a sick day?"</li>
+        <li>"Is it okay to want to be taken care of?"</li>
+        <li>"Why do I feel I have to earn time off?"</li>
+      </ul>
+      <div class="ans"><h4>Your answer, every time</h4><p style="margin:0">Receiving is half of sacred reciprocity. Letting someone help is the gift. "Nothing needs to be earned today."</p></div>
+    </div>
+    <div class="card" style="--c:var(--crownc)"><span class="n">2</span>
+      <h3>"What is my body trying to tell me?"</h3>
+      <p class="meta">10 calls · about 13 people</p>
+      <div class="bar"><i style="width:67%"></i></div>
+      <ul>
+        <li>"Is this sore throat trying to tell me something?"</li>
+        <li>"Is the ringing in my ears a message, or stress?"</li>
+        <li>"Why do I feel like I can't breathe?"</li>
+        <li>"What is my gut telling me?"</li>
+      </ul>
+      <div class="ans"><h4>Your answer, every time</h4><p style="margin:0">An upgrade and an invitation, read through the chakras and the I Ching organs, then felt rather than figured out.</p></div>
+    </div>
+    <div class="card" style="--c:var(--solar)"><span class="n">3</span>
+      <h3>"Which inner voice is the true one?"</h3>
+      <p class="meta">9 calls · 8 people</p>
+      <div class="bar"><i style="width:60%"></i></div>
+      <ul>
+        <li>"Whose voice is it in my journeys?"</li>
+        <li>"Is this trauma, intuition or impatience?"</li>
+        <li>"How do I tell truth from ego when my instincts feel unsafe?"</li>
+        <li>"Do I trust the voice that wants to act, or the one that wants to rest?"</li>
+      </ul>
+      <div class="ans"><h4>Your answer, every time</h4><p style="margin:0">Trauma contracts and speaks in absolutes; intuition is still. Know it with a G, not a K. The body test settles it.</p></div>
+    </div>
+    <div class="card" style="--c:var(--throat)"><span class="n">4</span>
+      <h3>"Do I leave, and when?"</h3>
+      <p class="meta">9 calls · 12 people · the job, the marriage, the house</p>
+      <div class="bar"><i style="width:60%"></i></div>
+      <ul>
+        <li>"When do I leap careers?"</li>
+        <li>"Do I keep what belonged to the life before?"</li>
+        <li>"How do I end a marriage with love?"</li>
+        <li>"How do I make the practical calls while I'm still grieving?"</li>
+      </ul>
+      <div class="ans"><h4>Your answer, every time</h4><p style="margin:0">Don't rush it. Feel and grieve first, then take the next step the body gives. "Bet on yourself." The $900,000 job you turned down is the proof story, told on three calls.</p></div>
+    </div>
+  </div>
+  <p class="small" style="margin-top:18px">A close fifth, on 8 calls: <strong>"Can I be seen and speak my truth?"</strong> Counts come mostly from Wave's AI summaries, so treat them as close rather than exact. The questions are paraphrased and carry no names.</p>
+</div></section>
+
+<!-- ═════════════ SHADOW ═════════════ -->
+<section id="shadow" class="room shadowroom"><div class="wide">
+  <div class="room-head"><div>
+    <p class="eyebrow"><img src="./assets/scarab-light.png" alt="">The Fourth Four · In the Shadow</p>
+    <h2>What runs <em>under</em> the calls</h2>
+    <p>Patterns the room rarely names out loud. Each is the dark half of a gift, and each is showing up in this week's sky. The fourth one belongs to the container, which means it belongs to you, and it is the one with the easiest fix.</p>
+  </div><div class="count">VIII</div></div>
+
+  <div class="four">
+    <div class="card" style="--c:var(--shade)"><span class="n">1</span>
+      <h3>Worth earned by usefulness</h3>
+      <div class="gift"><span class="s">Martyrdom</span><em>→</em><span class="g">Devotion that includes the self</span></div>
+      <p class="meta">11+ calls · the strongest pattern on record</p>
+      <p>The oldest daughter whose life is a to-do list. The caretaker who cannot imagine making it alone. The one deciding for everyone while caring for an aging parent. The "perpetual spaceholder." The one who works the holidays and covers for everyone else. People bring a job question or a partner question. The question underneath is <strong>"Am I only safe when I'm useful?"</strong></p>
+      <p>You named it once, on Aug 12, as generational martyrdom. It is the shadow under the number one question, and it is why "nothing needs to be earned today" lands so hard.</p>
+      <div class="lenses" style="padding:10px 0 4px;border:0"><span class="lens t" data-k="gk27" style="--c:var(--shade)"><i></i>Sky today <b>Gate 27: Selfishness, which here looks like over-giving</b></span></div>
+    </div>
+    <div class="card" style="--c:var(--shade)"><span class="n">2</span>
+      <h3>"Tell me what to do," asked inside "how do I trust myself"</h3>
+      <div class="gift"><span class="s">Outsourced authority</span><em>→</em><span class="g">Discernment</span></div>
+      <p class="meta">At least 6 calls · the room's quiet contradiction</p>
+      <p><em>"What do I do? Where do I go? What do I do with my life?"</em> asked in the same breath as "how do I trust myself." A month later, the same person heard you say she was handing you her power. One member named the pattern on herself: asking for advice she already knows. Its cousin is reaching for a sign instead of a feeling: a card, a ringing in the ears, a child's worry read as a psychic warning, which you rightly declined to confirm.</p>
+      <p>The container mirrors it. Question in, channeled answer out, and now and then a direct instruction, against your own line that permission is always internal.</p>
+      <div class="lenses" style="padding:10px 0 4px;border:0"><span class="lens" style="--c:var(--shade)"><i></i>Sky today <b>Sun square Pluto: who have I handed my power to?</b></span></div>
+    </div>
+    <div class="card" style="--c:var(--shade)"><span class="n">3</span>
+      <h3>Catastrophe, dressed as being responsible</h3>
+      <div class="gift"><span class="s">Vigilance</span><em>→</em><span class="g">Vision</span></div>
+      <p class="meta">At least 7 calls</p>
+      <p>A move future-cast as hard before it has begun, which you called a spell. "Good times must end." "Five chess moves ahead." "Am I going to fail?" "What if it's too much for me?" <em>"I'm running out of time."</em> It passes for planning. It is a survivor's nervous system scanning for the next blow.</p>
+      <p>Your frame for it: the past is depression, the future is anxiety, the body lives in the present. You told one member her gift is clarity rather than anxiety. Same energy, pointed forward instead of braced.</p>
+      <div class="lenses" style="padding:10px 0 4px;border:0"><span class="lens" style="--c:var(--shade)"><i></i>Sky today <b>Moon with Uranus: the jumpy mind, and the held download</b></span></div>
+    </div>
+    <div class="card" style="--c:var(--shade)"><span class="n">4</span>
+      <h3>The clock and the queue</h3>
+      <div class="gift"><span class="s">Generosity without a shape</span><em>→</em><span class="g">Generosity with one</span></div>
+      <p class="meta">The container's shadow · 5 portals ran long</p>
+      <table style="font-size:.88rem;margin:4px 0 12px;width:100%;border-collapse:collapse">
+        <tr><th style="text-align:left;font-family:var(--head);font-size:9.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--ankh-hi);padding:6px 4px;border-bottom:1px solid rgba(165,118,38,.45)">Call</th><th style="text-align:left;font-family:var(--head);font-size:9.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--ankh-hi);padding:6px 4px;border-bottom:1px solid rgba(165,118,38,.45)">Planned</th><th style="text-align:left;font-family:var(--head);font-size:9.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--ankh-hi);padding:6px 4px;border-bottom:1px solid rgba(165,118,38,.45)">Ran</th></tr>
+        <tr><td style="padding:5px 4px;color:var(--ink-2)">May 27</td><td style="padding:5px 4px;color:var(--ink-3)">2 hours</td><td style="padding:5px 4px;color:#fff">3 hr 13 min</td></tr>
+        <tr><td style="padding:5px 4px;color:var(--ink-2)">Jun 24</td><td style="padding:5px 4px;color:var(--ink-3)">2 hours</td><td style="padding:5px 4px;color:#fff">2 hr 34 min</td></tr>
+        <tr><td style="padding:5px 4px;color:var(--ink-2)">Sep 9</td><td style="padding:5px 4px;color:var(--ink-3)">90 min</td><td style="padding:5px 4px;color:#fff">2 hr 28 min</td></tr>
+        <tr><td style="padding:5px 4px;color:var(--ink-2)">Aug 12</td><td style="padding:5px 4px;color:var(--ink-3)">90 min</td><td style="padding:5px 4px;color:#fff">1 hr 57 min</td></tr>
+        <tr><td style="padding:5px 4px;color:var(--ink-2)">Oct 14</td><td style="padding:5px 4px;color:var(--ink-3)">90 min</td><td style="padding:5px 4px;color:#fff">1 hr 51 min</td></tr>
+      </table>
+      <p>You call it yourself, cheerfully: "I rambled there," "enough of me rambling," "I tend to ramble." The cost lands on whoever is last in line: three times on record, the last share got a voice note instead of the floor. Your own near-death story has been told on four calls. It is a great story. The last person in the queue has heard it.</p>
+      <div class="lenses" style="padding:10px 0 4px;border:0"><span class="lens" style="--c:var(--shade)"><i></i>Sky today <b>Mercury retrograde square Mars: the story told again, louder</b></span></div>
+    </div>
+  </div>
+
+  <div class="note" style="margin-top:28px"><strong>Seen, but thinner.</strong> Apologizing for tears ("I'm sorry... I feel embarrassed") and the ego mocking the practice (talking to the body "feels stupid"). Both real, both on fewer calls than the four above. One pattern I went looking for and did not find: the room moving to "thank you" before a hard reframe has landed.</div>
+
+  <p class="lede read" style="margin-top:34px">The calls run long because you love the room. That is the part nobody would change. <em>So which is the bigger gift this morning: one more story, or the last person in line actually getting the floor?</em></p>
+</div></section>
+
+<!-- ═════════════ THE FOURS NOBODY COUNTED ═════════════ -->
+<section class="room alt"><div class="wide">
+  <div class="room-head"><div>
+    <p class="eyebrow"><img src="./assets/braid-light.png" alt="">Bonus · The Fours Nobody Counted</p>
+    <h2>Hiding in <em>plain sight</em></h2>
+    <p>Three more fours that fell out of reading every call side by side.</p>
+  </div><div class="count">IX</div></div>
+  <div class="slow" style="grid-template-columns:repeat(auto-fit,minmax(280px,1fr))">
+    <div><b>Where the bodies hurt</b><span>1 · Throat, jaw and neck (7)<br>2 · The gut (6)<br>3 · Chest, lungs, breath (5)<br>4 · One left shoulder, three calls running</span><p>The bodies point at the throat, right behind the fifth question: "Can I be seen?" One left arm, the receptive side, came back on three straight portals.</p></div>
+    <div><b>The transitions in the room</b><span>1 · Leaving a job (9+)<br>2 · Mother and parent wounds (8)<br>3 · Divorce or separation (7)<br>4 · A loved one dying or leaving (7)</span><p>Seven separations on record. Four of them on a single call, Sep 9.</p></div>
+    <div><b>What you prescribe</b><span>1 · The Purge Journal (5 calls)<br>2 · The throat prayer (3)<br>3 · Feet in the dirt (3)<br>4 · The six-minute check-in (2)</span><p>One member restarted the Purge Journal a month after telling the cohort it helped.</p></div>
+  </div>
+  <p class="small">The repeat askers circle one root: "what do I do with my life," then "which option," then "is this a warning," from one person, is the same safety question three times. Another member, across 10 calls, moved from fear, to small steps, to letting help in. That is the whole arc of the work, in one person.</p>
+</div></section>
+
+<!-- ═════════════ AHEAD ═════════════ -->
+<section id="ahead" class="room dots"><div class="wide">
+  <div class="room-head"><div>
+    <p class="eyebrow"><img src="./assets/arm-light.png" alt="">The Road Ahead</p>
+    <h2>Dates the field <em>will feel</em></h2>
+  </div><div class="count">X</div></div>
+  <div class="ahead">
+    <div><b>Fri Oct 30 · 12:00 PM</b><span>Mercury square Mars, exact</span><p>The peak of the hot-words week.</p></div>
+    <div><b>Sun Nov 1 · 4:00 AM</b><span>Venus trine the North Node</span><p>The heart flows toward the we. Last Quarter Moon in Leo that afternoon.</p></div>
+    <div><b>Wed Nov 4</b><span>Venus sextile Jupiter</span><p>Generosity of heart, freely available.</p></div>
+    <div><b>Mon Nov 9 · 1:02 AM</b><span>New Moon in Scorpio 16°53'</span><p>A seed planted in the dark, with Mercury and Venus both still retrograde. Gate 1, Freshness.</p></div>
+    <div><b>Wed Nov 11 · 9:00 AM</b><span>Next Collective call</span><p>Second Wednesday. The Skool calendar is the source of truth.</p></div>
+    <div><b>Thu Nov 12 · 10:00 PM</b><span>Mercury stations direct</span><p>Scorpio 5°03', right on today's Sun degree.</p></div>
+    <div><b>Fri Nov 13 · 7:00 AM</b><span>Venus stations direct</span><p>Libra 22°51'. The heart's review is complete.</p></div>
+    <div><b>Dec 10 and Dec 12</b><span>Saturn, then Neptune, turn direct</span><p>The rebuild gets traction. Jupiter turns retrograde Dec 12.</p></div>
+  </div>
+  <div class="note"><strong>Sources.</strong> All 16 recorded calls, read from their Wave summaries, with five portal transcripts (May 27, Aug 12, Sep 9, Sep 23, Oct 14) checked for the shadow evidence. Jul 22, Aug 26 and cohort calls #5 and #7 are not in Wave, so the record cannot speak to them. This is the public edition: every name, every story and every identifying detail from the room is left out. What remains is the sky, the counts, the patterns and Christopher's own words.</div>
+</div></section>
+
+<div class="close dots"><div class="wide">
+  <img src="./assets/mark-light.png" alt="">
+  <p class="big">The room has been asking for permission to <em>receive</em>. This morning the sky puts the heart across from the wound and asks the <em>same thing</em>.</p>
+</div></div>
+
+<footer>
+  <img src="./assets/mark-light.png" alt="">
+  <p class="promise">Tap the Wisdom of your Higher Self</p>
+  <p>Patterns, not people · No names and no stories from the room · Christopher Hager</p>
+</footer>
+
+<script>
+/* ── data: computed by the ACE engine for 2026-10-28 15:00 UTC (9:00 AM Costa Rica), Guanacaste ── */
+const ASC = 262.57;
+const CUSPS = [262.57,291.92,323.32,356.22,27.84,56.33,82.57,111.92,143.32,176.22,207.84,236.33];
+const SIGNS = ['Aries','Taurus','Gemini','Cancer','Leo','Virgo','Libra','Scorpio','Sagittarius','Capricorn','Aquarius','Pisces'];
+const SG = ['♈','♉','♊','♋','♌','♍','♎','♏','♐','♑','♒','♓'].map(s=>s+'︎');
+const ELEM = ['fire','earth','air','water'];
+const ECOL = {fire:'#E0724B',earth:'#8FB36A',air:'#E2C27A',water:'#6FA4D8'};
+const SIGNTIP = [
+ ['Aries','Cardinal fire, ruled by Mars. The head and face. The first push of life: courage, anger, going it alone.','Chakra: solar plexus. Saturn, Neptune and Chiron are here.'],
+ ['Taurus','Fixed earth, ruled by Venus. The throat, neck and voice. The body, money, slowness, what is mine.','Chakra: throat and root. Sunday\'s Full Moon was here.'],
+ ['Gemini','Mutable air, ruled by Mercury. Lungs, breath, arms, hands and the nervous system.','Chakra: throat and heart through the breath. Today\'s Moon and Uranus.'],
+ ['Cancer','Cardinal water, ruled by the Moon. Breasts, stomach, the home and the mother.','Chakra: heart and sacral. Empty of planets today.'],
+ ['Leo','Fixed fire, ruled by the Sun. The heart and spine. Joy, the inner child, being seen.','Chakra: heart. Mars and Jupiter are here.'],
+ ['Virgo','Mutable earth, ruled by Mercury. The gut and digestion. Health, routine, service.','Chakra: solar plexus. The call\'s Midheaven, its public purpose: healing.'],
+ ['Libra','Cardinal air, ruled by Venus. Kidneys and lower back. Partnership, balance, fairness.','Chakra: heart. Venus retrograde, back home since Oct 25.'],
+ ['Scorpio','Fixed water, ruled by Pluto and Mars. The sexual organs and elimination. Intimacy, trust, death and rebirth.','Chakra: sacral and root. The Sun and Mercury retrograde.'],
+ ['Sagittarius','Mutable fire, ruled by Jupiter. Hips and thighs. Faith, meaning, the teacher.','Rising at 9:00 AM: the call is a teaching circle.'],
+ ['Capricorn','Cardinal earth, ruled by Saturn. Bones, knees, skin. Structure, authority, time.','Chakra: root. Empty of planets today.'],
+ ['Aquarius','Fixed air, ruled by Uranus and Saturn. Ankles and circulation. Community, the future, the we.','Chakra: crown. Pluto and the North Node are here.'],
+ ['Pisces','Mutable water, ruled by Neptune. The feet and lymph. Dreams, dissolving, tears, surrender.','Chakra: crown and third eye. The Moon was here Oct 21 to 23.']
+];
+const P = [
+ {k:'Sun',g:'☉',lon:215.21,rx:false,h:11,gate:'28.4',does:'Identity, will, the life force.',today:'Lighting the call\'s 11th house of community. Square Pluto (2.1°), the power-and-control pressure of the week.'},
+ {k:'Moon',g:'☽',lon:68.57,rx:false,h:6,gate:'16.4',does:'The feeling body: what we need to feel safe.',today:'Waning gibbous in Gemini, the breath sign, next to Uranus (3.8°) and sextile Saturn (0.9°). Lightning that can be held.'},
+ {k:'Mercury',g:'☿',lon:229.64,rx:true,h:11,gate:'43.1',does:'Mind, voice, messages.',today:'Retrograde since Oct 23, walking back through old conversations. Square Mars, exact Fri Oct 30 at 12:00 PM.'},
+ {k:'Venus',g:'♀',lon:208.06,rx:true,h:11,gate:'50.2',does:'Love, value, pleasure, self-worth.',today:'Retrograde, back in Libra. Exactly opposite Chiron (0.2°), the tightest aspect in the sky, and trine the North Node (1.8°).'},
+ {k:'Mars',g:'♂',lon:136.90,rx:false,h:8,gate:'7.4',does:'Drive, desire, anger, direct action.',today:'In Leo, the proud heart, in the call\'s 8th house of shared depth. Square Mercury retrograde.'},
+ {k:'Jupiter',g:'♃',lon:143.90,rx:false,h:9,gate:'4.6',does:'Expansion, faith, abundance.',today:'In Leo, opposite the North Node (2.4°) and trine Chiron (4.0°). Generosity available, pointed at the group.'},
+ {k:'Saturn',g:'♄',lon:9.50,rx:true,h:4,gate:'21.1',does:'Structure, bones, time, authority.',today:'Retrograde in Aries in the 4th house of home and roots. The container that holds today\'s Moon. Direct Thu Dec 10.'},
+ {k:'Uranus',g:'♅',lon:64.80,rx:true,h:6,gate:'20.5',does:'Awakening, shock, rewiring.',today:'Retrograde in Gemini in the 6th house of health. The nervous-system and cough-wave planet. Trine Pluto (1.7°).'},
+ {k:'Neptune',g:'♆',lon:2.16,rx:true,h:4,gate:'25.5',does:'Dream, spirit, dissolving, devotion.',today:'Retrograde at the very start of Aries. Sextile Pluto within a degree. Direct Sat Dec 12.'},
+ {k:'Pluto',g:'♇',lon:303.11,rx:false,h:2,gate:'41.2',does:'Death, rebirth, power, the underworld.',today:'Direct since Oct 15 in the 2nd house of worth. Square the Sun, and locked onto Sunday\'s Full Moon.'},
+ {k:'Chiron',g:'⚷',lon:27.85,rx:true,h:5,gate:'3.2',does:'The wound that becomes the medicine.',today:'Retrograde in Aries, the wound of going it alone, on the 5th cusp of joy. Exactly opposite Venus.'},
+ {k:'Node',g:'☊',lon:326.25,rx:true,h:3,gate:'30.2',does:'The North Node: the collective\'s direction of growth.',today:'In Aquarius, from me to we. In the 3rd house of voice. Venus trines it Nov 1.'}
+];
+const ASPS = [
+ ['Venus','Chiron','opposite',0.21,'The tightest line in the sky. Love and the wound face each other across the me-and-we axis.'],
+ ['Sun','Pluto','square',2.10,'Power, control and the purge. Exact Mon Oct 26, now separating.'],
+ ['Mercury','Mars','square',2.74,'Hot words, old arguments. Tightening, exact Fri Oct 30.'],
+ ['Moon','Uranus','conjunct',3.77,'Lightning in the feeling body. Breakthroughs out loud.'],
+ ['Moon','Saturn','sextile',0.94,'The container holds the strike.'],
+ ['Venus','Node','trine',1.81,'The heart flows toward the group. Exact Nov 1.'],
+ ['Neptune','Pluto','sextile',0.95,'The two deepest planets cooperating. Dissolution and rebirth in step.'],
+ ['Uranus','Pluto','trine',1.69,'Awakening and rebirth in flow. A supported upgrade.'],
+ ['Jupiter','Node','opposite',2.35,'The big heart pulled toward the we.']
+];
+const TIPS = {
+ retrograde:['Retrograde','A planet appears to move backward from Earth. Its themes turn inward: review, revisit, redo. Not a punishment. A second pass.'],
+ six:['Six retrograde today','Mercury, Venus, Saturn, Uranus, Neptune and Chiron. Pluto turned direct Oct 15; Mercury turned retrograde Oct 23. Same number, new cast.'],
+ direct:['Direct','Moving forward again after a retrograde. What was reviewed now gets applied.'],
+ station:['Station','The moment a planet stands still before turning. It parks on one degree and presses, so its themes are at full volume.'],
+ conjunct:['Conjunction','Two planets on the same degree. Their energies fuse.'],
+ opposite:['Opposition','Two planets 180° apart, pulling from opposite sides. Awareness through the other person: we see ourselves in the mirror.'],
+ square:['Square','Two planets 90° apart. Friction that forces a choice or an action. Growth under pressure.'],
+ trine:['Trine','Two planets 120° apart. Easy flow, a gift that comes without effort.'],
+ sextile:['Sextile','Two planets 60° apart. An opening that rewards a little effort.'],
+ orb:['Orb','How far an aspect is from exact. Under 1° is loud. Venus and Chiron at 0.2° is about as loud as it gets.'],
+ axis:['The Aries and Libra axis','Aries is the self, standing alone. Libra is the self in relationship. The opposition between them is the oldest question there is: how do I stay me while being with you?'],
+ Node:['The North Node','Not a planet. The point where the Moon\'s path crosses the Sun\'s. Read as the collective\'s direction of growth. In Aquarius: community, shared intelligence, from me to we. Its partner, the South Node in Leo, is what we release: the solo hero.'],
+ cazimi:['Venus meets the Sun','Called an inferior conjunction, or cazimi, "in the heart of the Sun." Venus passes between Earth and Sun and a new 19-month Venus cycle begins. Venus is reborn, and soon rises as the morning star.'],
+ gibbous:['Waning gibbous','The Moon three days past full, still mostly lit and starting to shrink. The phase of sharing what the Full Moon revealed, and teaching it.'],
+ tsquare:['T-square','Two planets opposite each other, with a third square to both. A tight triangle of pressure. Sunday\'s Full Moon (Sun and Moon opposite) had Pluto squaring both within a third of a degree.'],
+ h6:['The 6th house','In the call chart: health, the daily body, routines, service. The Moon and Uranus are here this morning.'],
+ h11:['The 11th house','In the call chart: community, groups, friends, collective hopes. The Sun, Mercury and Venus all sit here this morning: the house of the Collective itself.'],
+ gate:['Human Design gate','The zodiac is divided into 64 gates, one for each I Ching hexagram. Wherever a planet sits, it lights that gate for everyone.'],
+ genekey:['Gene Key','Richard Rudd\'s reading of the same 64 hexagrams. Each key runs a spectrum: a Shadow (the fear pattern), a Gift (the same energy freed), and a Siddhi (its highest expression).'],
+ satnep:['Saturn and Neptune','They met exactly on Feb 20, 2026 at 0° Aries, the first time since 1989: the decade\'s loudest new-beginning signature. Both are retrograde now, walking back over that ground. Structure meets spirit. Direct Dec 10 and Dec 12.'],
+ outer:['The outer triangle','Neptune sextile Pluto (0.95°), Uranus trine Pluto (1.7°), Uranus sextile Neptune (2.6°). The three slowest planets in flowing aspect to each other. Rare, and read as a collective change that is supported rather than forced.'],
+ Libra:['Libra','Cardinal air, ruled by Venus. Partnership, balance, fairness, the kidneys and lower back.'],
+ Aries:['Aries','Cardinal fire, ruled by Mars. The self, courage, anger, the head. The first sign: where everything starts.'],
+ Scorpio:['Scorpio','Fixed water, ruled by Pluto. Intimacy, trust, sexuality, death and rebirth, the organs of release.'],
+ Aquarius:['Aquarius','Fixed air. Community, the future, the group mind. The "we" sign.'],
+ Leo:['Leo','Fixed fire, ruled by the Sun. The heart and spine. Joy, pride, being seen.'],
+ Gemini:['Gemini','Mutable air, ruled by Mercury. The lungs, breath, arms, hands and nervous system. Talk, curiosity, the restless mind.'],
+ Venus:['Venus','Love, value, pleasure, self-worth, what we are drawn to. Retrograde since Oct 3; reborn with the Sun Oct 23; direct Fri Nov 13.'],
+ Chiron:['Chiron','A small body between Saturn and Uranus, named for the centaur healer who could not heal his own wound. The wound that becomes the medicine. In Aries, the wound of having had to do it alone.'],
+ Uranus:['Uranus in Gemini','Sudden change, shock and rewiring, in the sign of the breath and the nerves. Retrograde since Sep 10.'],
+ Pluto:['Pluto','Death, rebirth, compost, power. In medical astrology, the body\'s purge: fever, infection, elimination. Direct since Oct 15 at 9:00 AM.'],
+ Jupiter:['Jupiter in Leo','Expansion through the heart. Opposite the North Node: generosity pointed at the group. Stations retrograde Sat Dec 12.'],
+ gk28:['Gene Key 28 · the Sun','Shadow: Purposelessness, the flat sense that none of it matters. Gift: Totality, throwing your whole self into life, including the hard part. Siddhi: Immortality. In the room: people asking "what is the point" in the middle of a death portal. The answer is to play it all the way.'],
+ gk27:['Gene Key 27 · the Earth','Shadow: Selfishness, which in this room usually shows up as the opposite, over-giving until empty. Gift: Altruism, caring that includes yourself. Siddhi: Selflessness. The receiving thread, in Gene Keys language.'],
+ gk16:['Gene Key 16 · the Moon','Shadow: Indifference, going numb so nothing touches you. Gift: Versatility, the ability to meet anything that comes. Siddhi: Mastery. In the room: the feelings that move fast today, and the skill of staying with each one.'],
+ gk43:['Gene Key 43 · Mercury','Shadow: Deafness, not hearing your own inner voice, or anyone else\'s. Gift: Insight, the sudden knowing. Siddhi: Epiphany. Mercury retrograde here: the inner voice gets louder when the outer one slows down.'],
+ gk50:['Gene Key 50 · Venus','Shadow: Corruption, values bending under pressure, the family rules we never chose. Gift: Equilibrium, values held steady. Siddhi: Harmony. The heart\'s operating agreements, under review.'],
+ gk3:['Gene Key 3 · Chiron','Shadow: Chaos, feeling that everything is falling apart. Gift: Innovation, the new thing that only comes out of the mess. Siddhi: Innocence. The wound as the birthplace of the new.'],
+ gk41:['Gene Key 41 · Pluto','Shadow: Fantasy, living in a dream of later. Gift: Anticipation, the feeling of a new cycle starting. Siddhi: Emanation. Gate 41 is the first gate of the wheel: Pluto is seeding a whole new cycle.'],
+ gk7:['Gene Key 7 · Mars','Shadow: Division, us against them. Gift: Guidance, leading by serving. Siddhi: Virtue. Mars here asks whether the fire is for winning or for leading.'],
+ gk20:['Gene Key 20 · Uranus','Shadow: Superficiality, rushing past what is here. Gift: Self-Assurance. Siddhi: Presence. The rewiring asks one thing: stay here while everything moves.'],
+ ySat:['Transit Saturn on your natal Sun','Second of three passes. Saturn tests and builds the bones of identity. Being made more yourself under pressure, and asked to carry real authority.'],
+ yMC:['The Sun on your Midheaven','The Midheaven is the top of your chart, your public calling. The Sun crossing it this week, while opposite your natal Chiron, lights your work in public with the wound on the other side of the sky. The wounded healer, visible.'],
+ yJup:['Transit Jupiter on your natal Saturn','Exact within a third of a degree. Saturn rules your chart, so Jupiter blessing it is grace on your structures: the container you are building for the work gets room to grow.'],
+ yChi:['Transit Chiron on your natal Venus and Mercury','The wounded healer sitting on your voice and your heart, in your 3rd house of speech. This is why strep and the throat were so loud this month, and why the voice is the medicine.']
+};
+
+/* ── tooltip ── */
+const tip = document.getElementById('tip');
+function showTip(html, x, y){ tip.innerHTML = html; tip.classList.add('on');
+  const w = tip.offsetWidth, h = tip.offsetHeight; let L = x + 16, T = y + 18;
+  if (L + w > innerWidth - 10) L = Math.max(10, x - w - 16);
+  if (T + h > innerHeight - 10) T = Math.max(10, y - h - 14);
+  tip.style.left = L + 'px'; tip.style.top = T + 'px'; }
+function hideTip(){ tip.classList.remove('on'); }
+function bind(el, html){ el.setAttribute('tabindex','0');
+  el.addEventListener('mousemove', e => showTip(html(), e.clientX, e.clientY));
+  el.addEventListener('mouseleave', hideTip);
+  el.addEventListener('focus', () => { const r = el.getBoundingClientRect(); showTip(html(), r.left, r.bottom); });
+  el.addEventListener('blur', hideTip);
+  el.addEventListener('click', e => { const r = el.getBoundingClientRect(); showTip(html(), r.left, r.bottom); e.stopPropagation(); }); }
+document.addEventListener('click', hideTip);
+addEventListener('scroll', hideTip, {passive:true});
+document.querySelectorAll('[data-k]').forEach(el => { const t = TIPS[el.dataset.k]; if (t) bind(el, () => `<b>${t[0]}</b>${t[1]}`); });
+
+/* ── helpers ── */
+const fmt = lon => { lon = ((lon % 360) + 360) % 360; const s = Math.floor(lon / 30), d = lon - s * 30; return `${SIGNS[s]} ${Math.floor(d)}°${String(Math.floor((d % 1) * 60)).padStart(2,'0')}'`; };
+const NS = 'http://www.w3.org/2000/svg';
+const mk = (tag, attrs, parent) => { const e = document.createElementNS(NS, tag); for (const k in attrs) e.setAttribute(k, attrs[k]); parent && parent.appendChild(e); return e; };
+const C = 270, ang = lon => Math.PI + (lon - ASC) * Math.PI / 180;
+const xy = (lon, r) => [C + r * Math.cos(ang(lon)), C - r * Math.sin(ang(lon))];
+
+/* ── the wheel ── */
+const W = document.getElementById('wheel');
+const R1 = 258, R2 = 222, R3 = 214, RP = 172, RA = 120;
+mk('circle',{cx:C,cy:C,r:R1,fill:'#22102A',stroke:'rgba(217,166,72,.45)'},W);
+for (let i = 0; i < 12; i++) {
+  const a0 = i * 30, a1 = a0 + 30, g = mk('g',{class:'sg'},W);
+  const [x0,y0] = xy(a0,R1), [x1,y1] = xy(a1,R1), [x2,y2] = xy(a1,R2), [x3,y3] = xy(a0,R2);
+  mk('path',{d:`M${x0},${y0} A${R1},${R1} 0 0 0 ${x1},${y1} L${x2},${y2} A${R2},${R2} 0 0 1 ${x3},${y3} Z`,fill:ECOL[ELEM[i%4]],'fill-opacity':.16,stroke:'rgba(217,166,72,.3)'},g);
+  const [tx,ty] = xy(a0+15,(R1+R2)/2); const t = mk('text',{x:tx,y:ty,fill:ECOL[ELEM[i%4]]},g); t.textContent = SG[i];
+  bind(g, () => `<b>${SIGNTIP[i][0]}</b>${SIGNTIP[i][1]}<i>${SIGNTIP[i][2]}</i>`);
+}
+mk('circle',{cx:C,cy:C,r:R2,fill:'#1B0C20',stroke:'rgba(217,166,72,.4)'},W);
+for (let d = 0; d < 360; d += 5) { const [a,b] = xy(d,R2), [c,e] = xy(d, d % 30 ? R2-5 : R2-10); mk('line',{x1:a,y1:b,x2:c,y2:e,stroke:'rgba(239,231,218,.22)'},W); }
+CUSPS.forEach((c,i) => { const ax = i === 0 || i === 9 || i === 6 || i === 3; const [a,b] = xy(c,R3-12), [x,y] = xy(c,RA);
+  mk('line',{x1:a,y1:b,x2:x,y2:y,stroke: ax ? 'rgba(217,166,72,.6)' : 'rgba(239,231,218,.12)','stroke-width': ax ? 1.2 : 1},W);
+  const nx = CUSPS[(i+1)%12], span = ((nx - c) + 360) % 360, [hx,hy] = xy(c + span/2, RA + 14);
+  const t = mk('text',{x:hx,y:hy,class:'hl'},W); t.textContent = i + 1; });
+const [ax1,ay1] = xy(ASC, R1 + 4); const tA = mk('text',{x:ax1-6,y:ay1,class:'axis','text-anchor':'end','dominant-baseline':'central'},W); tA.textContent = 'ASC';
+const [mx1,my1] = xy(CUSPS[9], R1 + 10); const tM = mk('text',{x:mx1,y:my1,class:'axis','text-anchor':'middle'},W); tM.textContent = 'MC';
+mk('circle',{cx:C,cy:C,r:RA,fill:'none',stroke:'rgba(239,231,218,.1)'},W);
+
+/* aspect lines */
+const pos = Object.fromEntries(P.map(p => [p.k, p]));
+const ACOL = {opposite:'#D58A9B',square:'#D58A9B',trine:'#8FD6AA',sextile:'#8FD6AA',conjunct:'#E8C987'};
+ASPS.forEach(([a,b,type,orb,why]) => { const [x1,y1] = xy(pos[a].lon,RA), [x2,y2] = xy(pos[b].lon,RA);
+  let el;
+  if (type === 'conjunct') { const [cx,cy] = xy((pos[a].lon+pos[b].lon)/2, RA-26); el = mk('path',{d:`M${x1},${y1} Q${cx},${cy} ${x2},${y2}`,class:'asp',stroke:ACOL[type],'stroke-width':2.4},W); }
+  else el = mk('line',{x1,y1,x2,y2,class:'asp',stroke:ACOL[type],'stroke-dasharray': type==='sextile' ? '4 4' : ''},W);
+  if (a === 'Venus' && b === 'Chiron') el.setAttribute('stroke-width', 2.6);
+  const nm = a === 'Node' ? 'North Node' : a, nb = b === 'Node' ? 'North Node' : b;
+  bind(el, () => `<b>${nm} ${type} ${nb} · ${orb.toFixed(2)}°</b>${why}<i>${TIPS[type][1]}</i>`); });
+
+/* planets: spread glyphs so none overlap, tick at true degree */
+const sorted = [...P].sort((a,b) => a.lon - b.lon); const MIN = 9;
+sorted.forEach(p => p.disp = p.lon);
+for (let pass = 0; pass < 8; pass++) for (let i = 0; i < sorted.length; i++) { const a = sorted[i], b = sorted[(i+1) % sorted.length];
+  let d = ((b.disp - a.disp) + 360) % 360; if (d < MIN) { const push = (MIN - d) / 2; a.disp -= push; b.disp += push; } }
+P.forEach(p => { const [tx,ty] = xy(p.lon,R3-12), [ux,uy] = xy(p.lon,R3-22); mk('line',{x1:tx,y1:ty,x2:ux,y2:uy,stroke:'#D9A648','stroke-width':1.5},W);
+  const [lx,ly] = xy(p.disp, RP); mk('line',{x1:ux,y1:uy,x2:lx,y2:ly,stroke:'rgba(217,166,72,.3)'},W);
+  const g = mk('g',{class:'pl'},W); mk('circle',{cx:lx,cy:ly,r:15,class:'bg'},g);
+  const t = mk('text',{x:lx,y:ly},g); t.textContent = p.g + '︎';
+  if (p.rx) { const r = mk('text',{x:lx+13,y:ly+12,class:'rx'},g); r.textContent = 'R'; }
+  const nm = p.k === 'Node' ? 'North Node' : p.k;
+  bind(g, () => `<b>${nm} · ${fmt(p.lon)}${p.rx ? ' · retrograde' : ''}</b>${p.does} ${p.today}<i>House ${p.h} · Gate ${p.gate}</i>`); });
+
+/* list beside the wheel */
+const L = document.getElementById('nowlist');
+P.forEach(p => { const li = document.createElement('li'); const nm = p.k === 'Node' ? 'North Node' : p.k;
+  li.innerHTML = `<span class="g">${p.g}︎</span><span class="t">${nm}</span><span class="p">${fmt(p.lon)} ${p.rx ? '<span class="r">R</span>' : ''} · h${p.h} · g${p.gate}</span>`;
+  L.appendChild(li); bind(li.querySelector('.t'), () => `<b>${nm} · ${fmt(p.lon)}</b>${p.does} ${p.today}<i>House ${p.h} · Gate ${p.gate}</i>`); });
+
+/* the week strip: Moon at 9:00 AM each day, computed */
+const WEEK = [
+ ['Wed','Oct 21','Pisces',1.27,'55.2','Moon enters Pisces: tears, dreams, the feet, dissolving. A soft, porous day.',0],
+ ['Thu','Oct 22','Pisces',14.05,'63.3','Moon in Pisces. The last day of Libra season. Sensitive, permeable, easily overwhelmed.',0],
+ ['Fri','Oct 23','Pisces',27.25,'36.5','The big day. Sun into Scorpio at 4:00 AM, Mercury stations retrograde at 2:00 PM, Venus meets the Sun at 9:40 PM.',1],
+ ['Sat','Oct 24','Aries',10.87,'21.2','Moon in Aries, right over Saturn. Anger, independence, the weight of having to do it yourself.',0],
+ ['Sun','Oct 25','Aries',24.90,'42.5','Venus backs into Libra at 3:00 AM. The Moon crosses Chiron. Full Moon in Taurus at 10:12 PM, locked on Pluto.',1],
+ ['Mon','Oct 26','Taurus',9.25,'24.2','Sun square Pluto exact at 7:00 AM. Moon in Taurus: the throat, the body, the need to slow down.',1],
+ ['Tue','Oct 27','Taurus',23.85,'23.6','Moon in Taurus. Integration day. Comfort, food, the body asking for ground.',0],
+ ['Wed','Oct 28','Gemini',8.55,'16.4','Today. Moon in Gemini with Uranus, sextile Saturn. Venus opposite Chiron, 0.2°. The call at 9:00 AM.',1]
+];
+const WS = document.getElementById('weekstrip');
+WEEK.forEach(([dn,dd,sign,deg,gate,txt,ev],i) => { const si = SIGNS.indexOf(sign), col = ECOL[ELEM[si%4]];
+  const d = document.createElement('div'); d.className = 'day' + (i === WEEK.length-1 ? ' today' : ''); d.style.setProperty('--c', col);
+  d.innerHTML = `<div class="dn">${dn}</div><div class="dd">${dd.split(' ')[1]}</div><div class="mg">${SG[si]}</div><div class="ms">Moon ${sign}</div><span class="pip ${ev ? '' : 'no'}"></span>`;
+  WS.appendChild(d); bind(d, () => `<b>${dn} ${dd} · Moon ${sign} ${Math.floor(deg)}° at 9:00 AM</b>${txt}<i>Moon in Gate ${gate}</i>`); });
+</script>
+</body>
+</html>
